@@ -1,18 +1,24 @@
-// Servicio de productos - contiene la lógica de negocio
+// Importaciones
+import * as productsModel from "../models/products.model.js";
+
+// Devuelve todos los productos
 const getAll = async () => {
-  return [];
+  return await productsModel.getAll();
 };
 
+// Devuelve un producto por ID
 const getById = async (id) => {
-  return { id };
+  return await productsModel.getById(id);
 };
 
+// Crea un nuevo producto
 const create = async (data) => {
-  return { ...data };
+  return await productsModel.create(data);
 };
 
+// Elimina un producto por ID
 const remove = async (id) => {
-  return { id };
+  return await productsModel.remove(id);
 };
 
 export { getAll, getById, create, remove };
