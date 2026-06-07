@@ -35,11 +35,6 @@ app.use((req, res) => {
   res.status(404).json({ error: "Ruta no encontrada" });
 });
 
-// Middleware para rutas desconocidas (404)
-app.use((req, res) => {
-  res.status(404).json({ error: "Ruta no encontrada" });
-});
-
 // Inicio del servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
