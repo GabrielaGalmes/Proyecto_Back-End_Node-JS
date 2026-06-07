@@ -16,7 +16,7 @@ npm install
 
 ## Configuración
 
-Crear un archivo `.env` en la raíz del proyecto con las siguientes variables:
+Crear un archivo `.env` en la raíz del proyecto con las siguientes variables (ver `.env.example`):
 
 ```
 PORT=3000
@@ -28,7 +28,7 @@ FIREBASE_STORAGE_BUCKET=tu_storage_bucket
 FIREBASE_MESSAGING_SENDER_ID=tu_messaging_sender_id
 FIREBASE_APP_ID=tu_app_id
 
-JWT_SECRET=tu_secreto_jwt
+JWT_SECRET=tu_clave_secreta_para_jwt
 ```
 
 ## Uso
@@ -104,6 +104,21 @@ Body:
 }
 ```
 
+#### Actualizar un producto
+
+```
+PUT /api/products/:id
+```
+
+Body:
+```json
+{
+  "title": "Nuevo nombre",
+  "price": 1200
+}
+```
+
+
 #### Eliminar un producto
 
 ```
@@ -112,6 +127,7 @@ DELETE /api/products/:id
 
 ## Manejo de errores
 
+- `400` — faltan datos en la petición (Bad Request)
 - `401` — token no proporcionado o credenciales inválidas
 - `403` — token inválido o expirado
 - `404` — ruta no encontrada
