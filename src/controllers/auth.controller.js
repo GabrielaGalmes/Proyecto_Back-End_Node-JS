@@ -1,19 +1,21 @@
 // Importaciones
 import jwt from "jsonwebtoken";
-
-// Credenciales hardcodeadas (en un proyecto real vendrían de la base de datos)
-const VALID_USER = {
-  email: "admin@techlab.com",
-  password: "admin123",
-};
+import * as authService from "../services/auth.service.js";
 
 // Autentica al usuario y devuelve un token
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Validar que las credenciales coincidan
-    if (email !== VALID_USER.email || password !== VALID_USER.password) {
+    // Validar que se envíen las credenciales
+    if (!email || !password) {
+      return res.status(400).json({ error: "Email y contraseña son requeridos" });
+    }
+
+    // Validar que las credenciales coincidan a través del servicio
+    const isValid = await authService.validateCredentials(email, password);
+
+    if (!isValid) {
       return res.status(401).json({ error: "Credenciales inválidas" });
     }
 
