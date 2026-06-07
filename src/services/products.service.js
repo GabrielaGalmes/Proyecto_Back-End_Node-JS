@@ -16,9 +16,14 @@ const create = async (data) => {
   return await productsModel.create(data);
 };
 
+// Actualiza un producto por ID
+const update = async (id, data) => {
+  return await productsModel.update(id, data);
+};
+
 // Elimina un producto por ID
 const remove = async (id) => {
   return await productsModel.remove(id);
 };
 
-export { getAll, getById, create, remove };
+export { getAll, getById, create, update, remove };

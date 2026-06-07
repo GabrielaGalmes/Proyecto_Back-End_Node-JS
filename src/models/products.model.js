@@ -5,6 +5,7 @@ import {
   getDoc,
   addDoc,
   deleteDoc,
+  updateDoc,
   doc,
 } from "firebase/firestore";
 import { db } from "../config/firebase.config.js";
@@ -39,4 +40,11 @@ const remove = async (id) => {
   return { id };
 };
 
-export { getAll, getById, create, remove };
+// Actualiza un producto por ID
+const update = async (id, data) => {
+  const docRef = doc(db, "products", id);
+  await updateDoc(docRef, data);
+  return { id, ...data };
+};
+
+export { getAll, getById, create, update, remove };
