@@ -1,7 +1,7 @@
 
-# Proyecto Final Back-End/Node-JS
+# TechLab API (Proyecto Final Back-End/Node-JS)
 
-API REST desarrollada en Node.js con Express que permite administrar el catálogo de productos de una tienda en línea. Habilita operaciones de lectura, creación y eliminación de productos almacenados en la nube mediante Firestore de Firebase, con autenticación basada en JWT.
+API REST desarrollada en Node.js con Express que permite administrar el catálogo de productos de una tienda en línea. Habilita operaciones de lectura, creación, actualización y eliminación de productos almacenados en la nube mediante Firestore de Firebase, con autenticación basada en JWT.
 
 ## Requisitos
 
@@ -43,6 +43,12 @@ npm run start
 
 ```bash
 npm run dev
+```
+
+### Ejecutar los tests
+
+```bash
+npm test
 ```
 
 El servidor queda disponible en `http://localhost:3000`.
@@ -135,15 +141,16 @@ DELETE /api/products/:id
 
 ## Arquitectura
 
-```
 src/
+├── app.js          # Configuración de Express
 ├── config/         # Configuración de Firebase
 ├── controllers/    # Controladores de rutas
 ├── middlewares/    # Middleware de autenticación JWT
 ├── models/         # Acceso a datos con Firestore
 ├── routes/         # Definición de rutas
 └── services/       # Lógica de negocio
-```
+tests/
+└── products.test.js  # Tests con Vitest y Supertest```
 
 ## Tecnologías utilizadas
 
@@ -155,3 +162,5 @@ src/
 - dotenv
 - CORS
 - body-parser
+- Vitest
+- Supertest
