@@ -1,9 +1,16 @@
 // Importaciones
 import * as productsService from "../services/products.service.js";
 
-// Devuelve todos los productos
+// Devuelve todos los productos, o filtrados por categoría si se especifica
 const getAll = async (req, res) => {
   try {
+    const { category } = req.query;
+
+    if (category) {
+      const products = await productsService.getByCategory(category);
+      return res.json(products);
+    }
+
     const products = await productsService.getAll();
     res.json(products);
   } catch (error) {

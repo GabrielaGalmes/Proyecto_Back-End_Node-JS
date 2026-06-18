@@ -61,6 +61,17 @@ describe("GET /api/products", () => {
       .set("Authorization", `Bearer ${token}`);
     expect(Array.isArray(res.body)).toBe(true);
   });
+
+  test("filtra productos por categoría", async () => {
+    const res = await request(app)
+      .get("/api/products?category=Zapatillas")
+      .set("Authorization", `Bearer ${token}`);
+    expect(res.status).toBe(200);
+    expect(Array.isArray(res.body)).toBe(true);
+    res.body.forEach((product) => {
+      expect(product.category).toBe("Zapatillas");
+    });
+  });
 });
 
 // Tests de POST

@@ -6,6 +6,11 @@ const getAll = async () => {
   return await productsModel.getAll();
 };
 
+// Devuelve productos filtrados por categoría
+const getByCategory = async (category) => {
+  return await productsModel.getByCategory(category);
+};
+
 // Devuelve un producto por ID
 const getById = async (id) => {
   return await productsModel.getById(id);
@@ -26,4 +31,4 @@ const remove = async (id) => {
   return await productsModel.remove(id);
 };
 
-export { getAll, getById, create, update, remove };
+export { getAll, getById, create, update, remove, getByCategory };

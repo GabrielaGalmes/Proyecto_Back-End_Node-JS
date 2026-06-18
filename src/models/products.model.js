@@ -7,6 +7,8 @@ import {
   deleteDoc,
   updateDoc,
   doc,
+  query, 
+  where,
 } from "firebase/firestore";
 import { db } from "../config/firebase.config.js";
 
@@ -47,4 +49,11 @@ const update = async (id, data) => {
   return { id, ...data };
 };
 
-export { getAll, getById, create, update, remove };
+// Devuelve productos filtrados por categoría
+const getByCategory = async (category) => {
+  const q = query(productsCollection, where("category", "==", category));
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+};
+
+export { getAll, getById, create, update, remove, getByCategory };
