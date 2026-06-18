@@ -87,6 +87,15 @@ Authorization: Bearer <token>
 GET /api/products
 ```
 
+#### Filtrar productos por categoría
+
+```
+GET /api/products?category=Zapatillas
+```
+
+La búsqueda es exacta y sensible a mayúsculas — `"Zapatillas"` no es igual a `"zapatillas"`.
+
+
 #### Obtener un producto por ID
 
 ```
