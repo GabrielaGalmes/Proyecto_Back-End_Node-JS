@@ -170,6 +170,5 @@ tests/
 - JSON Web Token (JWT)
 - dotenv
 - CORS
-- body-parser
 - Vitest
 - Supertest

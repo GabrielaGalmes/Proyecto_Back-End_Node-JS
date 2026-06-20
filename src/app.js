@@ -1,7 +1,6 @@
 // Importaciones
 import express from "express";
 import cors from "cors";
-import bodyParser from "body-parser";
 import productsRouter from "./routes/products.routes.js";
 import authRouter from "./routes/auth.routes.js";
 
@@ -9,7 +8,7 @@ const app = express();
 
 // Middlewares globales
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
 // Rutas
 app.use("/api/products", productsRouter);
